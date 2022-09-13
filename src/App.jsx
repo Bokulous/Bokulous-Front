@@ -8,7 +8,9 @@ function App() {
   const [books, setBooks] = useState(0)
 
   useEffect(() => {
-    fetch("https://bokulous.azurewebsites.net/api/Books/GetBooks")
+    fetch("https://bokulous.azurewebsites.net/api/Books/GetBooks", {
+      mode: "no-cors",
+  })
     .then((resp) => console.log(resp));
   }, [] )
 
