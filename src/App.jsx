@@ -5,19 +5,25 @@ import { useEffect } from 'react'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [books, setBooks] = useState(0)
+  const [books, setBooks] = useState(null)
 
   useEffect(() => {
-    fetch("https://bokulous.azurewebsites.net/api/Books/GetBooks", {
-      mode: "no-cors",
-  })
-    .then((resp) => console.log(resp));
+    async function fetchData() {
+      let response = await fetch('https://bokulous.azurewebsites.net/api/Books/GetBooks');
+      let data = await response.text();
+  
+      console.log(data);
+      setBooks(data)
+    }
+
+    fetchData();
   }, [] )
 
 
   return (
     <div className="App">
       <div>
+        <div>{books}</div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
