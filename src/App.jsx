@@ -1,50 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { useEffect } from 'react'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import './App.css';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; //om vi vill använda routing
+import Landingpage from './components/Landingpage';
+import Header from './components/Header';
+import Navbar from './components/NavBar';
+import Basket from './components/Basket';
+import CreateUser from './components/CreateUser';
+import LogIn from './components/LogIn';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [books, setBooks] = useState(null)
-
-  useEffect(() => {
-    async function fetchData() {
-      let response = await fetch('https://bokulous.azurewebsites.net/api/Books/GetBooks');
-      let data = await response.text();
-  
-      console.log(data);
-      setBooks(data)
-    }
-
-    fetchData();
-  }, [] )
-
-
   return (
-    <div className="App">
-      <div>
-        <div>{books}</div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="App">
+        <Header />
+        <Navbar />
+
+        <main>
+          <Routes>
+            <Route path="/LogIn" element={<LogIn />} />
+            <Route path="/Home" element={<Landingpage />} />
+            <Route path="/Basket" element={<Basket />} />
+            <Route path="/CreateUser" element={<CreateUser />} />
+          </Routes>
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
