@@ -1,9 +1,9 @@
 :root {
-  --background: rgb(79, 110, 79);
-  --headertext: #e2e9db;
-  --text: #dce6de;
-  --accentdark: #537544;
-  --accentlight: #bbbba3;
+  --background: #432E36;
+  --headertext: #AF8D86;
+  --text: #EDBFC6;
+  --accentdark: #260C1A;
+  --accentlight: #5F4842;
 
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;

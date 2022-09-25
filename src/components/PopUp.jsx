@@ -1,6 +1,6 @@
-import '../styles/PopUpAddToBasket.css';
+import '../styles/PopUp.css';
 
-const PopUpAddToBasket = (books) => {
+const PopUp = (books) => {
   return (
     <div className="popup-box">
       <div className="box">
@@ -11,4 +11,4 @@ const PopUpAddToBasket = (books) => {
   );
 };
 
-export default PopUpAddToBasket;
+export default PopUp;

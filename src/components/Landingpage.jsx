@@ -1,15 +1,16 @@
 import '../styles/Landingpage.css';
 import { useState, useEffect } from 'react';
-import PopUpInfo from './PopUpInfo';
-import PopUpAddToBasket from './PopUpAddToBasket';
+import PopUp from './PopUp';
 
 const Landingpage = () => {
   const [books, setBooks] = useState(null);
-  const [isOpen, setIsOpen] = useState(false); //till popup
+  const [isInfoOpen, setIsInfoOpen] = useState(false); //till popup
+  const [isBasketPopUpOpen, setIsBasketPopUpOpen] = useState(false); //till popup
+  const [currentOpenBook, setCurrentOpenBook] = useState(-1); //till popup
 
   useEffect(() => {
     async function fetchData() {
-      let response = await fetch('https://localhost:7204/api/Books/GetBooks');
+      let response = await fetch('https://localhost:44367/api/Books/GetBooks');
       //'https://bokulous.azurewebsites.net/api/Books/GetBooks' //fungerar endast via main(?)
 
       let data = await response.json();
@@ -20,12 +21,15 @@ const Landingpage = () => {
     fetchData();
   }, []);
 
-  const togglePopUpInfo = () => {
-    setIsOpen(!isOpen);
+  //sätter ruta och bokindex
+  const togglePopUpInfo = (i) => {
+    setCurrentOpenBook(i);
+    setIsInfoOpen(!isInfoOpen);
   };
 
-  const togglePopUpAddToBasket = () => {
-    setIsOpen(!isOpen);
+  const togglePopUpAddToBasket = (i) => {
+    setCurrentOpenBook(i);
+    setIsBasketPopUpOpen(!isBasketPopUpOpen);
   };
 
   return (
@@ -34,7 +38,7 @@ const Landingpage = () => {
       <h3>Här kan man se alla böcker i vårt sortiment!</h3>
       <div className="book-container">
         <ul className="book">
-          {books?.map((book) => (
+          {books?.map((book, i) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
 
@@ -58,13 +62,16 @@ const Landingpage = () => {
                 </ul>
               ))}
               <div className="book-buttons-container">
-                <button className="lp-buttons" onClick={togglePopUpInfo}>
+                <button
+                  className="lp-buttons"
+                  onClick={() => togglePopUpInfo(i)}
+                >
                   Mer info
-                  {isOpen && (
-                    <PopUpInfo
+                  {isInfoOpen && i == currentOpenBook && (
+                    <PopUp
                       content={
                         <>
-                          <b>{book.title}</b>
+                          <h4>{book.title}</h4>
                           <p>ISBN: {book.isbn}</p>
                           <p>Språk: {book.language}</p>
                           <p>Publicerad: {book.published}</p>
@@ -75,14 +82,20 @@ const Landingpage = () => {
                     />
                   )}
                 </button>
-                <button className="lp-buttons" onClick={togglePopUpAddToBasket}>
+                <button
+                  className="lp-buttons"
+                  onClick={() => togglePopUpAddToBasket(i)}
+                >
                   Lägg till i varukorgen
-                  {isOpen && (
-                    <PopUpAddToBasket
+                  {isBasketPopUpOpen && i == currentOpenBook && (
+                    <PopUp
                       content={
                         <>
-                          <b>{book.title} är tillagd i varukorgen!</b>
+                          <h4>{book.title} är tillagd i varukorgen!</h4>
                           <p>Forsätt handla genom att trycka på krysset.</p>
+                          <p>
+                            Obs, endast visuellt. Kod för detta är ej skrivet...
+                          </p>
                         </>
                       }
                       handleClose={togglePopUpAddToBasket}
