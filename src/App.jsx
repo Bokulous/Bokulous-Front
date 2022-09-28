@@ -1,28 +1,64 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
-import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; //om vi vill använda routing
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landingpage from './components/Landingpage';
 import Header from './components/Header';
 import Navbar from './components/NavBar';
 import Basket from './components/Basket';
 import CreateUser from './components/CreateUser';
 import LogIn from './components/LogIn';
+import StatsForAdmin from './components/StatsForAdmin';
+import Profile from './components/Profile';
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
   return (
     <Router>
       <div className="App">
         <Header />
-        <Navbar />
+        <Navbar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
 
         <main>
           <Routes>
-            <Route path="/LogIn" element={<LogIn />} />
-            <Route path="/Home" element={<Landingpage />} />
-            <Route path="/Basket" element={<Basket />} />
+            <Route
+              path="/LogIn"
+              element={
+                <LogIn
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+              }
+            />
+            <Route
+              path="/Home"
+              element={
+                <Landingpage
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+              }
+            />
+            <Route
+              path="/Basket"
+              element={
+                <Basket
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+              }
+            />
             <Route path="/CreateUser" element={<CreateUser />} />
+            <Route path="/StatsForAdmin" element={<StatsForAdmin />} />
+            <Route
+              path="/Profile"
+              element={
+                <Profile
+                  loggedInUser={loggedInUser}
+                  setLoggedInUser={setLoggedInUser}
+                />
+              }
+            />
           </Routes>
         </main>
       </div>

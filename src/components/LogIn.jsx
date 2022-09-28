@@ -1,8 +1,7 @@
 import '../styles/LogIn.css';
 import { useState, useEffect } from 'react';
 
-const LogIn = () => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+const LogIn = ({ loggedInUser, setLoggedInUser }) => {
   const [logInSuccess, setLogInSuccess] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -15,7 +14,6 @@ const LogIn = () => {
 
   async function login() {
     let item = { username, password };
-    console.log(item);
     let response = await fetch('https://localhost:44367/api/Users/Login', {
       method: 'POST',
       headers: {
@@ -27,11 +25,31 @@ const LogIn = () => {
     });
     if (response.status === 200) {
       let data = await response.json();
-      console.log(data);
       setLoggedInUser(data);
       setLogInSuccess(true);
     }
   }
+  // Påbörjade metoder till glömt lösen/användarnamn. Lägger dessa i en annan ticket
+
+  // async function forgotUsername(){
+  //   let response = await fetch('https://localhost:44367/api/Users/ForgotUsername', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //     },
+  // }
+
+  // async function forgotPassword(){
+  //   let response = await fetch('https://localhost:44367/api/Users/ForgotPassword', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //     },
+  // }
 
   const LogInForm = (
     <div className="form">
@@ -58,6 +76,8 @@ const LogIn = () => {
           <input type="submit" onClick={login} />
         </div>
       </form>
+      <button classname="forgot-btn">Glömt användarnamnet?</button>
+      <button classname="forgot-btn">Glömt lösenordet?</button>
     </div>
   );
 
@@ -66,8 +86,8 @@ const LogIn = () => {
       <h2>Här loggar man in!</h2>
       <div className="login-form">
         <div className="title">Logga in med användarnamn och lösenord!</div>
-        {logInSuccess ? (
-          <div>{loggedInUser.username} är inloggad.</div>
+        {logInSuccess && loggedInUser ? (
+          <div>{loggedInUser?.username} är inloggad.</div>
         ) : (
           LogInForm
         )}
