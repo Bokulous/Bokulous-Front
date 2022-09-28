@@ -2,7 +2,7 @@ import '../styles/Landingpage.css';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
 
-const Landingpage = () => {
+const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
   const [books, setBooks] = useState(null);
   const [isInfoOpen, setIsInfoOpen] = useState(false); //till popup
   const [isBasketPopUpOpen, setIsBasketPopUpOpen] = useState(false); //till popup
@@ -35,6 +35,11 @@ const Landingpage = () => {
   return (
     <section className="main-container">
       <h2>Startsida</h2>
+      {loggedInUser ? (
+        <div> {loggedInUser.username} är inloggad.</div>
+      ) : (
+        <p>Logga in via menyn för att köpa och sälja böcker</p>
+      )}
       <h3>Här kan man se alla böcker i vårt sortiment!</h3>
       <div className="book-container">
         <ul className="book">
