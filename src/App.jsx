@@ -9,9 +9,20 @@ import CreateUser from './components/CreateUser';
 import LogIn from './components/LogIn';
 import StatsForAdmin from './components/StatsForAdmin';
 import Profile from './components/Profile';
+import Cart from './components/Cart';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
+
+    const addCartItem = (newTeamMember) => {
+      let obj = { ...cartItems}
+      setTeamMembers([...cartItems, obj])
+    }
+    const removeCartItem = (removedCartItem) => {
+      const filteredCartItems = cartItems.filter(f => f.id != removedCartItem.id )
+      setTeamMembers(filteredCartItems)
+    }
 
   return (
     <Router>
@@ -36,15 +47,18 @@ function App() {
                 <Landingpage
                   loggedInUser={loggedInUser}
                   setLoggedInUser={setLoggedInUser}
+                  addCartItem={addCartItem}
                 />
               }
             />
             <Route
-              path="/Basket"
+              path="/Cart"
               element={
-                <Basket
+                <Cart
                   loggedInUser={loggedInUser}
                   setLoggedInUser={setLoggedInUser}
+                  cartItems={cartItems}
+                  removeCartItem={removeCartItem}
                 />
               }
             />

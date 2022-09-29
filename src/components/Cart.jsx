@@ -1,37 +1,6 @@
-import '../styles/Landingpage.css';
-import { useState, useEffect } from 'react';
-import PopUp from './PopUp';
 
-const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
-  const [books, setBooks] = useState(null);
-  const [isInfoOpen, setIsInfoOpen] = useState(false); //till popup
-  const [isBasketPopUpOpen, setIsBasketPopUpOpen] = useState(false); //till popup
-  const [currentOpenBook, setCurrentOpenBook] = useState(-1); //till popup
 
-  useEffect(() => {
-    async function fetchData() {
-      let response = await fetch('https://localhost:44367/api/Books/GetBooks');
-      //'https://bokulous.azurewebsites.net/api/Books/GetBooks' //fungerar endast via main(?)
-
-      let data = await response.json();
-      console.log(data);
-      setBooks(data);
-    }
-
-    fetchData();
-  }, []);
-
-  //sätter ruta och bokindex
-  const togglePopUpInfo = (i) => {
-    setCurrentOpenBook(i);
-    setIsInfoOpen(!isInfoOpen);
-  };
-
-  const togglePopUpAddToBasket = (i) => {
-    setCurrentOpenBook(i);
-    setIsBasketPopUpOpen(!isBasketPopUpOpen);
-  };
-
+const Cart = () => {
   return (
     <section className="main-container">
       <h2>Startsida</h2>
@@ -90,11 +59,10 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
                 <button
                   className="lp-buttons"
                   onClick={() => {
-                    togglePopUpAddToBasket(i)
-                    addCartItem({title, category, author, id})
+                    removeCartItem({title, category, author})
                   }}
                 >
-                  Lägg till i varukorgen
+                  Ta bort från varukorgen
                   {isBasketPopUpOpen && i == currentOpenBook && (
                     <PopUp
                       content={
@@ -118,5 +86,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
     </section>
   );
 };
-
-export default Landingpage;
+//lista böcker i varukorgen
+//böcker ska kunna läggas till och tas bort ut varukorgen
+//varukorgen ska kunna skicka user vidare till betalning
+export default Cart;
