@@ -91,7 +91,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
                   className="lp-buttons"
                   onClick={() => {
                     togglePopUpAddToBasket(i)
-                    addCartItem({title, category, author, id})
+                    addCartItem({author})
                   }}
                 >
                   Lägg till i varukorgen

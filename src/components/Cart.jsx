@@ -1,4 +1,4 @@
-
+import { useState } from 'react'
 
 const Cart = () => {
   return (
@@ -9,7 +9,6 @@ const Cart = () => {
       ) : (
         <p>Logga in via menyn för att köpa och sälja böcker</p>
       )}
-      <h3>Här kan man se alla böcker i vårt sortiment!</h3>
       <div className="book-container">
         <ul className="book">
           {books?.map((book, i) => (
@@ -35,31 +34,12 @@ const Cart = () => {
                   </li>
                 </ul>
               ))}
+              
               <div className="book-buttons-container">
                 <button
                   className="lp-buttons"
-                  onClick={() => togglePopUpInfo(i)}
-                >
-                  Mer info
-                  {isInfoOpen && i == currentOpenBook && (
-                    <PopUp
-                      content={
-                        <>
-                          <h4>{book.title}</h4>
-                          <p>ISBN: {book.isbn}</p>
-                          <p>Språk: {book.language}</p>
-                          <p>Publicerad: {book.published}</p>
-                          <p>Vikt: {book.weight}g</p>
-                        </>
-                      }
-                      handleClose={togglePopUpInfo}
-                    />
-                  )}
-                </button>
-                <button
-                  className="lp-buttons"
                   onClick={() => {
-                    removeCartItem({title, category, author})
+                    removeCartItem({books})
                   }}
                 >
                   Ta bort från varukorgen

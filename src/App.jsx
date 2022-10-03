@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landingpage from './components/Landingpage';
 import Header from './components/Header';
 import Navbar from './components/NavBar';
-import Basket from './components/Basket';
+import Basket from './components/Cart';
 import CreateUser from './components/CreateUser';
 import LogIn from './components/LogIn';
 import StatsForAdmin from './components/StatsForAdmin';
@@ -15,13 +15,13 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [cartItems, setCartItems] = useState([]);
 
-    const addCartItem = (newTeamMember) => {
-      let obj = { ...cartItems}
-      setTeamMembers([...cartItems, obj])
+    const addCartItem = (newCartItem) => {
+      let obj = { ...newCartItem, id}
+      setCartItems([...cartItems, obj])
     }
     const removeCartItem = (removedCartItem) => {
       const filteredCartItems = cartItems.filter(f => f.id != removedCartItem.id )
-      setTeamMembers(filteredCartItems)
+      setCartItems(filteredCartItems)
     }
 
   return (
