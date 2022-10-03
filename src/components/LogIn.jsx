@@ -1,4 +1,5 @@
 import '../styles/LogIn.css';
+import config from '../config.js';
 import { useState, useEffect } from 'react';
 
 const LogIn = ({ loggedInUser, setLoggedInUser }) => {
@@ -14,7 +15,8 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
 
   async function login() {
     let item = { username, password };
-    let response = await fetch('https://localhost:44367/api/Users/Login', {
+    let action = "/api/Users/Login"
+    let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,8 +78,8 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
           <input type="submit" onClick={login} />
         </div>
       </form>
-      <button classname="forgot-btn">Glömt användarnamnet?</button>
-      <button classname="forgot-btn">Glömt lösenordet?</button>
+      <button className="forgot-btn">Glömt användarnamnet?</button>
+      <button className="forgot-btn">Glömt lösenordet?</button>
     </div>
   );
 
