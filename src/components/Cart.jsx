@@ -1,11 +1,14 @@
+import { useEffect } from 'react';
 import { useState } from 'react'
 
 
 
-const Cart = ({removeCartItem, cartItems}) => {
+const Cart = ({removeCartItem, cartItems, loggedInUser}) => {
+
+
   return (
     <section className="main-container">
-      <h2>Startsida</h2>
+      <h2>Varukorg</h2>
       {loggedInUser ? (
         <div> {loggedInUser.username} är inloggad.</div>
       ) : (
@@ -13,7 +16,7 @@ const Cart = ({removeCartItem, cartItems}) => {
       )}
       <div className="book-container">
         <ul className="book">
-          {cartItems?.map((book, i) => (
+          {cartItems?.map((book) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
 
@@ -21,24 +24,10 @@ const Cart = ({removeCartItem, cartItems}) => {
                 <button
                   className="lp-buttons"
                   onClick={() => {
-                    removeCartItem({books})
+                    removeCartItem({book})
                   }}
                 >
                   Ta bort från varukorgen
-                  {isBasketPopUpOpen && i == currentOpenBook && (
-                    <PopUp
-                      content={
-                        <>
-                          <h4>{book.title} är tillagd i varukorgen!</h4>
-                          <p>Forsätt handla genom att trycka på krysset.</p>
-                          <p>
-                            Obs, endast visuellt. Kod för detta är ej skrivet...
-                          </p>
-                        </>
-                      }
-                      handleClose={togglePopUpAddToBasket}
-                    />
-                  )}
                 </button>
               </div>
             </li>
