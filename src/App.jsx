@@ -16,7 +16,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
     const addCartItem = (newCartItem) => {
-      let obj = { ...newCartItem, id}
+      let obj = { ...newCartItem}
       setCartItems([...cartItems, obj])
     }
     const removeCartItem = (removedCartItem) => {

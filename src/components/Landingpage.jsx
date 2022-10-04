@@ -2,7 +2,7 @@ import '../styles/Landingpage.css';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
 
-const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
+const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
   const [books, setBooks] = useState(null);
   const [isInfoOpen, setIsInfoOpen] = useState(false); //till popup
   const [isBasketPopUpOpen, setIsBasketPopUpOpen] = useState(false); //till popup
@@ -91,7 +91,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
                   className="lp-buttons"
                   onClick={() => {
                     togglePopUpAddToBasket(i)
-                    addCartItem({author})
+                    addCartItem({})
                   }}
                 >
                   Lägg till i varukorgen

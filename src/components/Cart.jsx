@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
-const Cart = () => {
+
+
+const Cart = ({removeCartItem, cartItems}) => {
   return (
     <section className="main-container">
       <h2>Startsida</h2>
@@ -11,30 +13,10 @@ const Cart = () => {
       )}
       <div className="book-container">
         <ul className="book">
-          {books?.map((book, i) => (
+          {cartItems?.map((book, i) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
 
-              <p className="isUsed">
-                Skick: {book.isUsed ? 'Begagnad' : 'Ny'}{' '}
-              </p>
-              <p>Författare:</p>
-              {book?.authors?.map((author) => (
-                <ul>
-                  <li>
-                    <p>{author}</p>
-                  </li>
-                </ul>
-              ))}
-              <p>Kategori:</p>
-              {book?.categories?.map((category) => (
-                <ul>
-                  <li>
-                    <p>{category}</p>
-                  </li>
-                </ul>
-              ))}
-              
               <div className="book-buttons-container">
                 <button
                   className="lp-buttons"
