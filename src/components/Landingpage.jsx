@@ -1,4 +1,5 @@
 import '../styles/Landingpage.css';
+import config from '../config.js';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
 
@@ -10,7 +11,8 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
 
   useEffect(() => {
     async function fetchData() {
-      let response = await fetch('https://localhost:44367/api/Books/GetBooks');
+      let action = "/api/Books/GetBooks"
+      let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action)
       //'https://bokulous.azurewebsites.net/api/Books/GetBooks' //fungerar endast via main(?)
 
       let data = await response.json();
