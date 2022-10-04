@@ -1,0 +1,21 @@
+.create-form{
+    background-color: var(--accentdark);
+    border-radius: 5px;
+    width: 20%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.create-form-body{
+    text-align: center;
+    padding: 1rem;
+}
+
+.form__label{
+    width: 40%;
+	color: var(--text);
+}
+
+.form_input{
+    width: 50%;
+}

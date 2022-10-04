@@ -76,8 +76,8 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
           <input type="submit" onClick={login} />
         </div>
       </form>
-      <button classname="forgot-btn">Glömt användarnamnet?</button>
-      <button classname="forgot-btn">Glömt lösenordet?</button>
+      <button className="forgot-btn">Glömt användarnamnet?</button>
+      <button className="forgot-btn">Glömt lösenordet?</button>
     </div>
   );
 
