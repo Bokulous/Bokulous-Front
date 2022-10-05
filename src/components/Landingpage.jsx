@@ -11,8 +11,10 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
 
   useEffect(() => {
     async function fetchData() {
-      let action = "/api/Books/GetBooks"
-      let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action)
+      let action = '/api/Books/GetBooks';
+      let response = await fetch(
+        config.apiSettings.address + ':' + config.apiSettings.port + action
+      );
       //'https://bokulous.azurewebsites.net/api/Books/GetBooks' //fungerar endast via main(?)
 
       let data = await response.json();

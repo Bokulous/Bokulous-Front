@@ -1,0 +1,19 @@
+
+  
+  .profile-img {
+	border-radius: 50%;
+  }
+
+  .ul-profile {
+	list-style-type: none;
+	color: var(--text);
+	padding: 1rem;
+  }
+
+  .ul-profile li {
+	padding: 0.2rem;
+  }
+
+  .edit-btn {
+	margin: 1rem;
+  }

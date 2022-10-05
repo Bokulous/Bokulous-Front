@@ -15,17 +15,20 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
 
   async function login() {
     let item = { username, password };
-    let action = "/api/Users/Login"
-    let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(item),
-    });
-    if (response.status === 200) {
+    let action = '/api/Users/Login';
+    let response = await fetch(
+      config.apiSettings.address + ':' + config.apiSettings.port + action,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(item),
+      }
+    );
+    if (response.status >= 200 && response.status < 300) {
       let data = await response.json();
       setLoggedInUser(data);
       setLogInSuccess(true);
