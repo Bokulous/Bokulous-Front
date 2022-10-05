@@ -1,0 +1,22 @@
+.bookcard-container {
+    display: grid;
+    width: 80vw;
+    height: 50vh;
+
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 300px);
+    grid-auto-flow: row;
+
+    grid-gap: 25px;
+    margin: 0 auto;
+}
+
+.bookcard-container .bookcard {
+    margin: 1em;
+
+    background-color: rgb(83, 68, 80);
+}
+
+.bookcard-container .bookcard:nth-child(even) {
+    background-color: rgb(86, 78, 85);
+}
