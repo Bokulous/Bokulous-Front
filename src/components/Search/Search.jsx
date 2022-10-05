@@ -123,8 +123,7 @@ function Search() {
                 <br /><br />
                 <div style={{width:'41vw', margin:'0 auto'}}>
                 <ThemeProvider theme={theme}>
-            
-
+                    
                     <div style={{display:'inline-block', float:'left'}}>
                         <FormControl style={{maxWidth: 200, minWidth: 50, margin: 5}}>
                             <TextField onChange={(event) => setAuthor(event.target.value)} id="author" label="Författare" variant="outlined" />
