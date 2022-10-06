@@ -96,7 +96,6 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
                   className="lp-buttons"
                   onClick={() => {
                     //togglePopUpAddToBasket(i)
-                    console.log(book)
                     addCartItem(book)
                   }}
                 >
