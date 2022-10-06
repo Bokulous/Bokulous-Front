@@ -2,6 +2,8 @@ import '../styles/Landingpage.css';
 import config from '../config.js';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
+import ShowBook from './ShowBookContainer';
+import ShowBookContainer from './ShowBookContainer';
 
 const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
   const [books, setBooks] = useState(null);
@@ -48,6 +50,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
           {books?.map((book, i) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
+              
 
               <p className="isUsed">
                 Skick: {book.isUsed ? 'Begagnad' : 'Ny'}{' '}
@@ -55,7 +58,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
               <p>Författare:</p>
               {book?.authors?.map((author) => (
                 <ul>
-                  <li>
+                  <li key={book.id}>
                     <p>{author}</p>
                   </li>
                 </ul>
@@ -63,7 +66,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
               <p>Kategori:</p>
               {book?.categories?.map((category) => (
                 <ul>
-                  <li>
+                  <li key={book.id}>
                     <p>{category}</p>
                   </li>
                 </ul>
@@ -93,6 +96,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
                   className="lp-buttons"
                   onClick={() => {
                     //togglePopUpAddToBasket(i)
+                    console.log(book)
                     addCartItem(book)
                   }}
                 >

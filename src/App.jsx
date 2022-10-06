@@ -9,13 +9,16 @@ import LogIn from './components/LogIn';
 import StatsForAdmin from './components/StatsForAdmin';
 import Profile from './components/Profile';
 import Cart from './components/Cart';
+import { v4 as uuid } from 'uuid';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [cartItems, setCartItems] = useState([]);
 
+    const uniqueId = uuid()
+
     const addCartItem = (newCartItem) => {
-      let obj = { ...newCartItem}
+      let obj = { ...newCartItem, id: uniqueId}
       setCartItems([...cartItems, obj])
     }
     const removeCartItem = (removedCartItem) => {

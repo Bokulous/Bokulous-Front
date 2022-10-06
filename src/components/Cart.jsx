@@ -19,12 +19,13 @@ const Cart = ({removeCartItem, cartItems, loggedInUser}) => {
           {cartItems?.map((book) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
-
+              <h4>{book.price} kr</h4>
               <div className="book-buttons-container">
                 <button
                   className="lp-buttons"
                   onClick={() => {
-                    removeCartItem({book})
+                    console.log(book)
+                    removeCartItem(book)
                   }}
                 >
                   Ta bort från varukorgen
