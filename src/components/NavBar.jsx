@@ -23,7 +23,7 @@ const Navbar = ({ loggedInUser, setLoggedInUser }) => {
         <Link to="/Search">Sök</Link>
 
         {loggedInUser ? (
-          <Link to="/Basket">Varukorg</Link>
+          <Link to="/Cart">Varukorg</Link>
         ) : (
           <Link to="/LogIn">Varukorg, inlogg krävs</Link>
         )}

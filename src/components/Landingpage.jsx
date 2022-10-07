@@ -2,8 +2,10 @@ import '../styles/Landingpage.css';
 import config from '../config.js';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
+import ShowBook from './ShowBookContainer';
+import ShowBookContainer from './ShowBookContainer';
 
-const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
+const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
   const [books, setBooks] = useState(null);
   const [isInfoOpen, setIsInfoOpen] = useState(false); //till popup
   const [isBasketPopUpOpen, setIsBasketPopUpOpen] = useState(false); //till popup
@@ -48,6 +50,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
           {books?.map((book, i) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
+              
 
               <p className="isUsed">
                 Skick: {book.isUsed ? 'Begagnad' : 'Ny'}{' '}
@@ -55,7 +58,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
               <p>Författare:</p>
               {book?.authors?.map((author) => (
                 <ul>
-                  <li>
+                  <li key={book.id}>
                     <p>{author}</p>
                   </li>
                 </ul>
@@ -63,7 +66,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
               <p>Kategori:</p>
               {book?.categories?.map((category) => (
                 <ul>
-                  <li>
+                  <li key={book.id}>
                     <p>{category}</p>
                   </li>
                 </ul>
@@ -91,7 +94,10 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
                 </button>
                 <button
                   className="lp-buttons"
-                  onClick={() => togglePopUpAddToBasket(i)}
+                  onClick={() => {
+                    //togglePopUpAddToBasket(i)
+                    addCartItem(book)
+                  }}
                 >
                   Lägg till i varukorgen
                   {isBasketPopUpOpen && i == currentOpenBook && (

@@ -4,15 +4,28 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landingpage from './components/Landingpage';
 import Header from './components/Header';
 import Navbar from './components/NavBar';
-import Basket from './components/Basket';
 import CreateUser from './components/CreateUser';
 import LogIn from './components/LogIn';
 import StatsForAdmin from './components/StatsForAdmin';
 import Profile from './components/Profile';
+import Cart from './components/Cart';
+import { v4 as uuid } from 'uuid';
 import Search from './components/Search/Search';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
+
+    const uniqueId = uuid()
+
+    const addCartItem = (newCartItem) => {
+      let obj = { ...newCartItem, id: uniqueId}
+      setCartItems([...cartItems, obj])
+    }
+    const removeCartItem = (removedCartItem) => {
+      const filteredCartItems = cartItems.filter(f => f.id != removedCartItem.id )
+      setCartItems(filteredCartItems)
+    }
 
   return (
     <Router>
@@ -37,15 +50,18 @@ function App() {
                 <Landingpage
                   loggedInUser={loggedInUser}
                   setLoggedInUser={setLoggedInUser}
+                  addCartItem={addCartItem}
                 />
               }
             />
             <Route
-              path="/Basket"
+              path="/Cart"
               element={
-                <Basket
+                <Cart
                   loggedInUser={loggedInUser}
                   setLoggedInUser={setLoggedInUser}
+                  cartItems={cartItems}
+                  removeCartItem={removeCartItem}
                 />
               }
             />
