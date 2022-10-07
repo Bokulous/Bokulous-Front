@@ -1,0 +1,77 @@
+.bookcard-container {
+    display: grid;
+    justify-content: center;
+    width: 80vw;
+
+    grid-template-columns: 80%;
+    
+    grid-auto-flow: row;
+
+    grid-gap: 5px;
+    margin: 0 auto;
+}
+
+.price {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #DDD;
+}
+
+.bookcard-container .bookcard {
+    height: 300px;
+
+    text-align: left;
+
+    background-color: rgb(83, 68, 80);
+}
+
+.bookcard .bookcard-section1 {
+    display: inline;
+    float: left;
+    width:50%;
+    padding: 20px;
+}
+
+.bookcard .bookcard-bottom {
+    text-align: left;
+    padding-right: 20px;
+}
+
+.bookcard button {
+    width: 200px;
+    height: 30px;
+    margin-top: 1em;
+
+    font-weight: bold;
+    border-radius: 5px;
+
+    background-color: rgb(112, 200, 77);
+    transition: background-color 0.5s, scale 0.5s;
+}
+
+.bookcard button:hover {
+    background-color: rgb(87, 221, 110);
+    border: 2px solid rgb(0, 0, 0);
+
+    scale: 1.05;
+    cursor:pointer;
+
+    transition: background-color 0.2s, scale 0.2s;
+}
+
+.bookcard .bookcard-section2 {
+    display: inline;
+    float: left;
+    padding: 20px;
+}
+
+.bookcard-container .bookcard h1 {
+    font-size: 18pt;
+    font-style: normal;
+    margin-left:20px;
+    color:#DDD
+}
+
+.bookcard-container .bookcard:nth-child(even) {
+    background-color: rgb(86, 78, 85);
+}

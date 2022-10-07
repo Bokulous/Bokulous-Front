@@ -20,6 +20,7 @@ const Navbar = ({ loggedInUser, setLoggedInUser }) => {
         )}
 
         <Link to="/Home">Startsida</Link>
+        <Link to="/Search">Sök</Link>
 
         {loggedInUser ? (
           <Link to="/Cart">Varukorg</Link>

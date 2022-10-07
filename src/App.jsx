@@ -10,6 +10,7 @@ import StatsForAdmin from './components/StatsForAdmin';
 import Profile from './components/Profile';
 import Cart from './components/Cart';
 import { v4 as uuid } from 'uuid';
+import Search from './components/Search/Search';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -66,6 +67,7 @@ function App() {
             />
             <Route path="/CreateUser" element={<CreateUser />} />
             <Route path="/StatsForAdmin" element={<StatsForAdmin />} />
+            <Route path="/Search" element={<Search />} />
             <Route
               path="/Profile"
               element={
