@@ -34,27 +34,6 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
       setLogInSuccess(true);
     }
   }
-  // Påbörjade metoder till glömt lösen/användarnamn. Lägger dessa i en annan ticket
-
-  // async function forgotUsername(){
-  //   let response = await fetch('https://localhost:44367/api/Users/ForgotUsername', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json',
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  // }
-
-  // async function forgotPassword(){
-  //   let response = await fetch('https://localhost:44367/api/Users/ForgotPassword', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json',
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  // }
 
   const LogInForm = (
     <div className="form">

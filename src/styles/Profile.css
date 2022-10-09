@@ -2,9 +2,13 @@
   
   .profile-img {
 	border-radius: 50%;
+  border: 5px solid var(--accentlight);
+  margin: 0 auto;
+  width: 150px;
   }
 
   .ul-profile {
+  margin-top: auto;
 	list-style-type: none;
 	color: var(--text);
 	padding: 1rem;
@@ -15,5 +19,5 @@
   }
 
   .edit-btn {
-	margin: 1rem;
+	margin: 0.5rem;
   }

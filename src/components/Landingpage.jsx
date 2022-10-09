@@ -15,7 +15,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
       let response = await fetch(
         config.apiSettings.address + ':' + config.apiSettings.port + action
       );
-      //'https://bokulous.azurewebsites.net/api/Books/GetBooks' //fungerar endast via main(?)
+      //'https://bokulous.azurewebsites.net/api/Books/GetBooks'
 
       let data = await response.json();
       console.log(data);
@@ -36,9 +36,8 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
     setIsBasketPopUpOpen(!isBasketPopUpOpen);
   };
 
-  return (
-    <section className="main-container">
-      <h2>Startsida</h2>
+  const listBooksInStorage = (
+    <div>
       {loggedInUser ? (
         <div> {loggedInUser.username} är inloggad.</div>
       ) : (
@@ -50,26 +49,26 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
           {books?.map((book, i) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
-
               <p className="isUsed">
                 Skick: {book.isUsed ? 'Begagnad' : 'Ny'}{' '}
               </p>
+              <p className="price">Pris: {book.price}kr</p>
               <p>Författare:</p>
-              {book?.authors?.map((author) => (
-                <ul>
-                  <li>
+              <ul>
+                {book?.authors?.map((author) => (
+                  <li key={book.id + '_' + author}>
                     <p>{author}</p>
                   </li>
-                </ul>
-              ))}
+                ))}
+              </ul>
               <p>Kategori:</p>
-              {book?.categories?.map((category) => (
-                <ul>
-                  <li>
+              <ul>
+                {book?.categories?.map((category) => (
+                  <li key={book.id + '_' + category}>
                     <p>{category}</p>
                   </li>
-                </ul>
-              ))}
+                ))}
+              </ul>
               <div className="book-buttons-container">
                 <button
                   className="lp-buttons"
@@ -116,6 +115,13 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
           ))}
         </ul>
       </div>
+    </div>
+  );
+
+  return (
+    <section className="main-container">
+      <h2>Startsida</h2>
+      {listBooksInStorage}
     </section>
   );
 };
