@@ -94,26 +94,16 @@ function Search() {
         (book) => book.price >= price[0] && book.price <= price[1]
       );
 
-      //Published
-      tempBooks = tempBooks.filter(
-        (book) =>
-          (book.published >= publishedFrom || publishedFrom == '') &&
-          (book.published <= publishedTo || publishedTo == '')
-      );
+            //Published
+            tempBooks = tempBooks.filter(book => (book.published >= publishedFrom  || publishedFrom == "") && (book.published <= publishedTo || publishedTo == ""));
+            
+            setBooks(tempBooks);
 
-      setBooks(tempBooks);
-    }
-
-    filterResults();
-  }, [
-    searchString,
-    selectedCategory,
-    author,
-    publishedFrom,
-    publishedTo,
-    price,
-    isUsed,
-  ]);
+        }
+        console.log(books)
+        filterResults();
+        
+    }, [searchString, selectedCategory, author, publishedFrom, publishedTo, price, isUsed]);
 
   function valuetext(value) {
     return `${value} kr`;
@@ -135,41 +125,27 @@ function Search() {
     setIsUsed(event.target.value);
   };
 
-  return (
-    <div>
-      <input onChange={handleChangeSearch} className="Search" />
-      <br />
-      <br />
-      <div style={{ width: '41vw', margin: '0 auto' }}>
-        <ThemeProvider theme={theme}>
-          <div style={{ display: 'inline-block', float: 'left' }}>
-            <FormControl style={{ maxWidth: 200, minWidth: 50, margin: 5 }}>
-              <TextField
-                onChange={(event) => setAuthor(event.target.value)}
-                id="author"
-                label="Författare"
-                variant="outlined"
-              />
-            </FormControl>
-            <br />
-            <FormControl style={{ maxWidth: 200, minWidth: 100, margin: 5 }}>
-              <TextField
-                onChange={(event) => setPublishedFrom(event.target.value)}
-                id="publishedFrom"
-                label="Publicerad från (år)"
-                variant="outlined"
-              />
-            </FormControl>
-            <br />
-            <FormControl style={{ maxWidth: 200, minWidth: 100, margin: 5 }}>
-              <TextField
-                onChange={(event) => setPublishedTo(event.target.value)}
-                id="publishedTo"
-                label="Publicerad till (år)"
-                variant="outlined"
-              />
-            </FormControl>
-          </div>
+    return (
+        <div>
+            
+                <input onChange={handleChangeSearch} className='Search' />
+                <br /><br />
+                <div style={{width:'41vw', margin:'0 auto'}}>
+                <ThemeProvider theme={theme}>
+
+                    <div style={{display:'inline-block', float:'left'}}>
+                        <FormControl style={{maxWidth: 200, minWidth: 50, margin: 5}}>
+                            <TextField onChange={(event) => setAuthor(event.target.value)} id="author" label="Författare" variant="outlined" />
+                        </FormControl><br />
+                        <FormControl style={{maxWidth: 200, minWidth: 100, margin: 5}}>
+                            <TextField onChange={(event) => setPublishedFrom(event.target.value)} id="publishedFrom" label="Publicerad från (år)" variant="outlined" />
+                        </FormControl><br />
+                        <FormControl style={{maxWidth: 200, minWidth: 100, margin: 5}}>
+                            <TextField onChange={(event) => setPublishedTo(event.target.value)} id="publishedTo" label="Publicerad till (år)" variant="outlined" />
+                        </FormControl>
+                    </div>
+                        
+                    <div style={{display:'inline-block', float:'right'}}>
 
           <div style={{ display: 'inline-block', float: 'right' }}>
             <FormControl style={{ minWidth: 200 }}>

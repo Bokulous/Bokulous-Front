@@ -2,8 +2,10 @@ import '../styles/Landingpage.css';
 import config from '../config.js';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
+import ShowBook from './ShowBookContainer';
+import ShowBookContainer from './ShowBookContainer';
 
-const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
+const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem }) => {
   const [books, setBooks] = useState(null);
   const [isInfoOpen, setIsInfoOpen] = useState(false); //till popup
   const [isBasketPopUpOpen, setIsBasketPopUpOpen] = useState(false); //till popup
@@ -92,7 +94,10 @@ const Landingpage = ({ loggedInUser, setLoggedInUser }) => {
                 </button>
                 <button
                   className="lp-buttons"
-                  onClick={() => togglePopUpAddToBasket(i)}
+                  onClick={() => {
+                    //togglePopUpAddToBasket(i)
+                    addCartItem(book);
+                  }}
                 >
                   Lägg till i varukorgen
                   {isBasketPopUpOpen && i == currentOpenBook && (
