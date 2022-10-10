@@ -2,8 +2,8 @@ import '../styles/Landingpage.css';
 import config from '../config.js';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
-// import ShowBook from './ShowBookContainer';
-// import ShowBookContainer from './ShowBookContainer';
+import ShowBook from './ShowBookContainer';
+import ShowBookContainer from './ShowBookContainer';
 
 const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem }) => {
   const [books, setBooks] = useState(null);
@@ -106,9 +106,6 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem }) => {
                         <>
                           <h4>{book.title} är tillagd i varukorgen!</h4>
                           <p>Forsätt handla genom att trycka på krysset.</p>
-                          <p>
-                            Obs, endast visuellt. Kod för detta är ej skrivet...
-                          </p>
                         </>
                       }
                       handleClose={togglePopUpAddToBasket}
