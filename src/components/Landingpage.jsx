@@ -3,7 +3,7 @@ import config from '../config.js';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
 
-const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
+const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem }) => {
   const [books, setBooks] = useState(null);
   const [isInfoOpen, setIsInfoOpen] = useState(false); //till popup
   const [isBasketPopUpOpen, setIsBasketPopUpOpen] = useState(false); //till popup
@@ -11,9 +11,11 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
 
   useEffect(() => {
     async function fetchData() {
-      let action = "/api/Books/GetBooks"
-      let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action)
-      //'https://bokulous.azurewebsites.net/api/Books/GetBooks' //fungerar endast via main(?)
+      let action = '/api/Books/GetBooks';
+      let response = await fetch(
+        config.apiSettings.address + ':' + config.apiSettings.port + action
+      );
+      //'https://bokulous.azurewebsites.net/api/Books/GetBooks'
 
       let data = await response.json();
       console.log(data);
@@ -34,9 +36,8 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
     setIsBasketPopUpOpen(!isBasketPopUpOpen);
   };
 
-  return (
-    <section className="main-container">
-      <h2>Startsida</h2>
+  const listBooksInStorage = (
+    <div>
       {loggedInUser ? (
         <div> {loggedInUser.username} är inloggad.</div>
       ) : (
@@ -48,27 +49,26 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
           {books?.map((book, i) => (
             <li key={book.id}>
               <h4>{book.title}</h4>
-              
-
               <p className="isUsed">
                 Skick: {book.isUsed ? 'Begagnad' : 'Ny'}{' '}
               </p>
+              <p className="price">Pris: {book.price}kr</p>
               <p>Författare:</p>
-              {book?.authors?.map((author) => (
-                <ul>
-                  <li key={book.id}>
+              <ul>
+                {book?.authors?.map((author) => (
+                  <li key={book.id + '_' + author}>
                     <p>{author}</p>
                   </li>
-                </ul>
-              ))}
+                ))}
+              </ul>
               <p>Kategori:</p>
-              {book?.categories?.map((category) => (
-                <ul>
-                  <li key={book.id}>
+              <ul>
+                {book?.categories?.map((category) => (
+                  <li key={book.id + '_' + category}>
                     <p>{category}</p>
                   </li>
-                </ul>
-              ))}
+                ))}
+              </ul>
               <div className="book-buttons-container">
                 <button
                   className="lp-buttons"
@@ -94,7 +94,7 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
                   className="lp-buttons"
                   onClick={() => {
                     //togglePopUpAddToBasket(i)
-                    addCartItem(book)
+                    addCartItem(book);
                   }}
                 >
                   Lägg till i varukorgen
@@ -104,9 +104,6 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
                         <>
                           <h4>{book.title} är tillagd i varukorgen!</h4>
                           <p>Forsätt handla genom att trycka på krysset.</p>
-                          <p>
-                            Obs, endast visuellt. Kod för detta är ej skrivet...
-                          </p>
                         </>
                       }
                       handleClose={togglePopUpAddToBasket}
@@ -118,6 +115,13 @@ const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem}) => {
           ))}
         </ul>
       </div>
+    </div>
+  );
+
+  return (
+    <section className="main-container">
+      <h2>Startsida</h2>
+      {listBooksInStorage}
     </section>
   );
 };

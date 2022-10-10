@@ -42,21 +42,6 @@ const CreateUser = () => {
       console.log(data);
       setNewUser(data);
     }
-
-    // newUser ? (
-    //   <PopUp
-    //     content={
-    //       <>
-    //         <h4>{newUser.Username} är tillagd som användare!</h4>
-    //         <p>Du kommer få ett mail med en aktiverings-länk.</p>
-    //         <p>Klicka på länken för att aktivera ditt konto.</p>
-    //         <br/>
-    //         <p>Välkommen till Bokulous!</p>
-    //       </>
-    //     }
-    //     handleClose={togglePopUpNewUser}
-    //     />
-    //           )
   }
 
   const CreateUserForm = (

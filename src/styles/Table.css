@@ -1,0 +1,27 @@
+table {
+    margin-top: 1rem;
+    width: 100%;
+    color: #EDBFC6;
+    text-align: left;
+    line-height: 14px;
+}
+th {
+    color: #AF8D86;
+}
+td, th {
+    border: 1px solid #5F4842;
+  }
+.array {
+    border: none;
+}
+
+.table-btn {
+	background-color: var(--accentlight);
+	border-color: var(--accentlight);
+}
+
+.table-btn:hover {
+  color: var(--accentdark);
+  transition: 0.3s transform, 0.3s background-color, 0.3s box-shadow, 0.3s ease-in-out;
+  box-shadow: 3px 3px 3px 3px rgba(31, 31, 29, 0.2);
+}

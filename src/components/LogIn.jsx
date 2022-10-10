@@ -28,7 +28,8 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
       },
       body: JSON.stringify(item),
     });
-    if (response.status === 200) {
+   
+    if (response.status >= 200 && response.status < 300) {
       let data = await response.json();
       setLoggedInUser(data);
       setLogInSuccess(true);
