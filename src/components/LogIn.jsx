@@ -1,6 +1,9 @@
 import '../styles/LogIn.css';
 import config from '../config.js';
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, NavLink, Routes, Route, useNavigate, Link } from 'react-router-dom';
+import ForgotPassword from './ForgotPassword';
+import ForgotUsername from './ForgotUsername';
 
 const LogIn = ({ loggedInUser, setLoggedInUser }) => {
   const [logInSuccess, setLogInSuccess] = useState(false);
@@ -15,19 +18,17 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
 
   async function login() {
     let item = { username, password };
-    let action = '/api/Users/Login';
-    let response = await fetch(
-      config.apiSettings.address + ':' + config.apiSettings.port + action,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify(item),
-      }
-    );
+    let action = "/api/Users/Login"
+    let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+         Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(item),
+    });
+   
     if (response.status >= 200 && response.status < 300) {
       let data = await response.json();
       setLoggedInUser(data);
@@ -60,8 +61,8 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
           <input type="submit" onClick={login} />
         </div>
       </form>
-      <button className="forgot-btn">Glömt användarnamnet?</button>
-      <button className="forgot-btn">Glömt lösenordet?</button>
+      <button className="forgot-btn"><Link to='/ForgotUsername'>Glömt användarnamn</Link></button>
+      <button className="forgot-btn"><Link to='/ForgotPassword'>Glömt lösenord</Link></button>
     </div>
   );
 
