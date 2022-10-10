@@ -2,8 +2,8 @@ import '../styles/Landingpage.css';
 import config from '../config.js';
 import { useState, useEffect } from 'react';
 import PopUp from './PopUp';
-import ShowBook from './ShowBookContainer';
-import ShowBookContainer from './ShowBookContainer';
+// import ShowBook from './ShowBookContainer';
+// import ShowBookContainer from './ShowBookContainer';
 
 const Landingpage = ({ loggedInUser, setLoggedInUser, addCartItem }) => {
   const [books, setBooks] = useState(null);
