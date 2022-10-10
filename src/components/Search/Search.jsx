@@ -14,8 +14,9 @@ import Typography from '@mui/material/Typography';
 import config from '../../config.js';
 import BookCard from '../BookCard';
 import BookCardContainer from '../BookCardContainer';
+import { useSlotProps } from '@mui/base';
 
-function Search() {
+function Search(props) {
     const [books, setBooks] = useState([]);
     const [allBooks, setAllBooks] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("");
@@ -121,7 +122,7 @@ function Search() {
             
                 <input onChange={handleChangeSearch} className='Search' />
                 <br /><br />
-                <div style={{width:'41vw', margin:'0 auto'}}>
+                <div className='search-filter-container'>
                 <ThemeProvider theme={theme}>
 
                     <div style={{display:'inline-block', float:'left'}}>
@@ -185,11 +186,11 @@ function Search() {
                         </FormControl>
                     </div>
                 </ThemeProvider>
-            </div>
+                </div>
                 <div>
                     <BookCardContainer>
                         {
-                            books.map(book => <BookCard key={book.id} book={book} />)
+                            books.map(book => <BookCard addCartItem={props.addCartItem} removeCartItem={props.removeCartItem} key={book.id} book={book} />)
                         }
                     </BookCardContainer>
                 </div>

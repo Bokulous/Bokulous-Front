@@ -30,3 +30,12 @@
 .Search:hover {
     border: 5px solid rgb(33, 33, 33);
 }
+
+.search-filter-container {
+    width: 41vw;
+    height: 240px;
+    margin: 0 auto;
+    margin-bottom:20px;
+    padding: 30px;
+    background-color: rgb(55, 49, 54);
+}

@@ -21,6 +21,7 @@ const Navbar = ({ loggedInUser, setLoggedInUser }) => {
 
         <Link to="/Home">Startsida</Link>
         <Link to="/Search">Sök</Link>
+        <Link to="/Checkout">Kassa</Link>
 
         {loggedInUser ? (
           <Link to="/Cart">Varukorg</Link>

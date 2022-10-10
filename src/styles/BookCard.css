@@ -25,6 +25,10 @@
     background-color: rgb(83, 68, 80);
 }
 
+.bookcard-container .bookcard p {
+    color:rgb(225, 221, 234);
+}
+
 .bookcard .bookcard-section1 {
     display: inline;
     float: left;
@@ -38,25 +42,25 @@
 }
 
 .bookcard button {
-    width: 200px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
     margin-top: 1em;
 
-    font-weight: bold;
+    
     border-radius: 5px;
 
-    background-color: rgb(112, 200, 77);
-    transition: background-color 0.5s, scale 0.5s;
+    background-color: rgb(126, 130, 89);
+    transition: background-color 0.2s, scale 0.2s;
 }
 
 .bookcard button:hover {
     background-color: rgb(87, 221, 110);
     border: 2px solid rgb(0, 0, 0);
 
-    scale: 1.05;
+    scale: 1.01;
     cursor:pointer;
 
-    transition: background-color 0.2s, scale 0.2s;
+    transition: background-color 0.1s, scale 0.1s;
 }
 
 .bookcard .bookcard-section2 {

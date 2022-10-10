@@ -32,7 +32,7 @@ function BookCard(props) {
                 <p>Publicerad: {props.book.published}</p>
                 <p>Second hand: {props.book.isUsed ? "Ja" : "Nej"}</p>
                 <p className='price'>Pris: {props.book.price} kr</p>
-                <button>Lägg i varukorg</button>
+                <button onClick={() => props.addCartItem(props.book)}>Lägg i varukorg</button>
             </div>
             <div className='bookcard-bottom'>
                 
