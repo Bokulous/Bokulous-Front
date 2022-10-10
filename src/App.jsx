@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import Landingpage from './components/Landingpage';
 import Header from './components/Header';
 import Navbar from './components/NavBar';
@@ -10,6 +10,9 @@ import StatsForAdmin from './components/StatsForAdmin';
 import Profile from './components/Profile';
 import Cart from './components/Cart';
 import { v4 as uuid } from 'uuid';
+import ForgotPassword from './components/ForgotPassword';
+import ForgotUsername from './components/ForgotUsername';
+
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -75,6 +78,8 @@ function App() {
                 />
               }
             />
+             <Route path="/ForgotPassword" element={<ForgotPassword />} />
+             <Route path="/ForgotUsername" element={<ForgotUsername />} />
           </Routes>
         </main>
       </div>

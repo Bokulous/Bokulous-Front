@@ -1,6 +1,9 @@
 import '../styles/LogIn.css';
 import config from '../config.js';
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, NavLink, Routes, Route, useNavigate, Link } from 'react-router-dom';
+import ForgotPassword from './ForgotPassword';
+import ForgotUsername from './ForgotUsername';
 
 const LogIn = ({ loggedInUser, setLoggedInUser }) => {
   const [logInSuccess, setLogInSuccess] = useState(false);
@@ -20,7 +23,7 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+         Accept: 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(item),
@@ -31,27 +34,6 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
       setLogInSuccess(true);
     }
   }
-  // Påbörjade metoder till glömt lösen/användarnamn. Lägger dessa i en annan ticket
-
-  // async function forgotUsername(){
-  //   let response = await fetch('https://localhost:44367/api/Users/ForgotUsername', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json',
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  // }
-
-  // async function forgotPassword(){
-  //   let response = await fetch('https://localhost:44367/api/Users/ForgotPassword', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json',
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  // }
 
   const LogInForm = (
     <div className="form">
@@ -78,8 +60,8 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
           <input type="submit" onClick={login} />
         </div>
       </form>
-      <button className="forgot-btn">Glömt användarnamnet?</button>
-      <button className="forgot-btn">Glömt lösenordet?</button>
+      <button className="forgot-btn"><Link to='/ForgotUsername'>Glömt användarnamn</Link></button>
+      <button className="forgot-btn"><Link to='/ForgotPassword'>Glömt lösenord</Link></button>
     </div>
   );
 
