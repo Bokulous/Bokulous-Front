@@ -15,43 +15,25 @@ const LogIn = ({ loggedInUser, setLoggedInUser }) => {
 
   async function login() {
     let item = { username, password };
-    let action = "/api/Users/Login"
-    let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(item),
-    });
-    if (response.status === 200) {
+    let action = '/api/Users/Login';
+    let response = await fetch(
+      config.apiSettings.address + ':' + config.apiSettings.port + action,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(item),
+      }
+    );
+    if (response.status >= 200 && response.status < 300) {
       let data = await response.json();
       setLoggedInUser(data);
       setLogInSuccess(true);
     }
   }
-  // Påbörjade metoder till glömt lösen/användarnamn. Lägger dessa i en annan ticket
-
-  // async function forgotUsername(){
-  //   let response = await fetch('https://localhost:44367/api/Users/ForgotUsername', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json',
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  // }
-
-  // async function forgotPassword(){
-  //   let response = await fetch('https://localhost:44367/api/Users/ForgotPassword', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json',
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  // }
 
   const LogInForm = (
     <div className="form">

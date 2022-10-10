@@ -36,9 +36,29 @@ const Navbar = ({ loggedInUser, setLoggedInUser }) => {
         )}
 
         {loggedInUser && loggedInUser.isAdmin ? (
+          <Link to="/GetBooksAdmin">Lista och hantera böcker</Link>
+        ) : loggedInUser ? (
+          <Link to="/GetUserBooks">Lista och hantera böcker</Link>
+        ) : (
+          <></>
+        )}
+
+        {loggedInUser && loggedInUser.isAdmin ? (
+          <Link to="/GetUsers">Lista och hantera användare</Link>
+        ) : (
+          <></>
+        )}
+        
+        {loggedInUser && loggedInUser.isAdmin ? (
+          <Link to="/GetCategories">Lista och hantera kategorier</Link>
+        ) : (
+          <></>
+        )}
+        
+        {loggedInUser && loggedInUser.isAdmin ? (
           <Link to="/StatsForAdmin">Statistik för Admin</Link>
         ) : (
-          <Link to="/LogIn">Statistik för Admin</Link>
+          <></>
         )}
       </nav>
     </section>

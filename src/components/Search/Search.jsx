@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import "../../styles/Search.css";
+import '../../styles/Search.css';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -15,6 +15,7 @@ import config from '../../config.js';
 import BookCard from '../BookCard';
 import BookCardContainer from '../BookCardContainer';
 import { useSlotProps } from '@mui/base';
+
 
 function Search(props) {
     const [books, setBooks] = useState([]);
@@ -194,8 +195,8 @@ function Search(props) {
                         }
                     </BookCardContainer>
                 </div>
-            </div>
-        );
+            </div>)
 }
+
 
 export default Search;
