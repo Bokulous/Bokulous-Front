@@ -31,7 +31,7 @@ const ForgotPassword = ({  }) => {
       <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <label>Email</label>
+          <label>Skriv in din email</label>
           <input
             type="text"
             id="email"
@@ -49,9 +49,11 @@ const ForgotPassword = ({  }) => {
     <section className="login-container">
       <h2>Hej</h2>
       <div className="login-form">
-        <div className="title">Skriv in din mail</div>
         {ForgotPasswordSuccess ? (
+          <div>
+          <div className="title">Skriv in din mail</div>
           <div>Ett mail har skickats med ditt nya lösenord.</div>
+          </div>
         ) : (
           forgotPasswordForm
         )}
