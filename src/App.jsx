@@ -12,7 +12,7 @@ import Cart from './components/Cart';
 import { v4 as uuid } from 'uuid';
 import ForgotPassword from './components/ForgotPassword';
 import ForgotUsername from './components/ForgotUsername';
-
+import Search from './components/Search/Search';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -69,6 +69,7 @@ function App() {
             />
             <Route path="/CreateUser" element={<CreateUser />} />
             <Route path="/StatsForAdmin" element={<StatsForAdmin />} />
+            <Route path="/Search" element={<Search />} />
             <Route
               path="/Profile"
               element={
