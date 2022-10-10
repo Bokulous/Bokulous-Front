@@ -27,21 +27,6 @@ import BlockUser from './components/Admin/Users/BlockUser';
 import InactivateUser from './components/Admin/Users/InactivateUser';
 import PromoteUser from './components/Admin/Users/PromoteUser';
 import ChangePassAdmin from './components/Admin/Users/ChangePassAdmin';
-import GetBooksAdmin from './components/Admin/Books/GetBooksAdmin';
-import AddBook from './components/BookHandler/AddBook';
-import DeleteBook from './components/BookHandler/DeleteBook';
-import UpdateBook from './components/BookHandler/UpdateBook';
-import PurgeBook from './components/Admin/Books/PurgeBook';
-import GetCategories from './components/Admin/Categories/GetCategories';
-import AddCategory from './components/Admin/Categories/AddCategory';
-import DeleteCategory from './components/Admin/Categories/DeleteCategory';
-import UpdateCategory from './components/Admin/Categories/UpdateCategory';
-import GetUserBooks from './components/BookHandler/GetUserBooks';
-import GetUsers from './components/Admin/Users/GetUsers';
-import BlockUser from './components/Admin/Users/BlockUser';
-import InactivateUser from './components/Admin/Users/InactivateUser';
-import PromoteUser from './components/Admin/Users/PromoteUser';
-import ChangePassAdmin from './components/Admin/Users/ChangePassAdmin';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
