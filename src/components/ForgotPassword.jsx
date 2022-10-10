@@ -47,13 +47,10 @@ const ForgotPassword = ({  }) => {
 
   return (
     <section className="login-container">
-      <h2>Hej</h2>
+      <h2>Glömt lösenord</h2>
       <div className="login-form">
         {ForgotPasswordSuccess ? (
-          <div>
-          <div className="title">Skriv in din mail</div>
           <div>Ett mail har skickats med ditt nya lösenord.</div>
-          </div>
         ) : (
           forgotPasswordForm
         )}

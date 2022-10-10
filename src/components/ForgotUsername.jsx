@@ -47,7 +47,7 @@ const ForgotUsername = ({  }) => {
 
   return (
     <section className="login-container">
-      <h2>Hej</h2>
+      <h2>Glömt användarnamn</h2>
       <div className="login-form">
         <div className="title">Skriv in din mail</div>
         {ForgotUsernameSuccess ? (
