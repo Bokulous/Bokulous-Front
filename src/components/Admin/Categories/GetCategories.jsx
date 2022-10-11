@@ -28,16 +28,27 @@ const GetCategories = () => {
 
   async function searchCategory() {
     let action = "/api/Books/GetCategoriesByKeyword"
-    let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action + `/${keyword}`, {
+    await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action + `/${keyword}`, {
       method: 'GET',
       headers: {
           'Accept':'application/json',
           'Content-Type':'application/json'
-      }})
-    let data = await response.json()
-    console.log(data)
-    setCategories(data)
-}
+        }
+      }).then((result) => {
+        result.json().then((data) => {
+             if(result.ok)
+             {
+              console.log("Success!")
+              setCategories(data)
+            }
+            else {
+              console.log("Something went wrong")
+            }
+         }).catch(err => {
+          console.log(err)
+      })
+     })
+  }
 
   const toggleAddOpen = (e) => {
     setIsAddOpen(!isAddOpen);
@@ -88,8 +99,9 @@ const GetCategories = () => {
                 <AddCategory              
                   handleClose={toggleAddClose}
                 />
-                )}                
-      <div className="list-books-container">
+                )}     
+                         
+      <div>
           <table>
             <tr>
                 <th>Kategori</th>
@@ -130,7 +142,7 @@ const GetCategories = () => {
                 </tr>  
               ))} 
           </table>
-      </div>
+      </div>     
     </section>
   );
 };

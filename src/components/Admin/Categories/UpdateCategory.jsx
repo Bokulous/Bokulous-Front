@@ -7,10 +7,10 @@ const UpdateCategory = (props) => {
     const category = categories[props.index]
     const [newName, setCategory] = useState(category.name);
 
-    function updateCategory() 
+    async function updateCategory() 
     {       
         let action = "/api/Books/UpdateCategory"
-        fetch(config.apiSettings.address + ":" + config.apiSettings.port + action + `/${newName}`, {
+        await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action + `/${newName}`, {
              method: 'PUT',
              headers: {
                  'Accept':'application/json',

@@ -46,10 +46,9 @@
 	background-color: var(--accentdark);
   }
 
-  .popup-label{
-	color: #EDBFC6;
+  .popup-label {
+	color: var(--text);
   }
 
-  .popup-form {
-	text-align: center;
-  }
+  
+  

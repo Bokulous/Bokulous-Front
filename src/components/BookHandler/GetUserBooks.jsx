@@ -12,25 +12,24 @@ const GetUserBooks = ({loggedInUser}) => {
   const [isEditOpen, setIsEditOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
   const [currentOpenBook, setCurrentOpenBook] = useState(-1)
-  const [responseSuccess, setResponseSuccess] = useState(false)
   const [refreshKey, setRefreshKey] = useState(0)
 
   useEffect(() => {
-    async function fetchData() {
-      
+    async function fetchData() {    
       const userId = loggedInUser.id
 
       let action = "/api/Books/GetSellerBooks"
       let response = await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action + `/${userId}`)
       let data = await response.json();
-      if(response.status === 404)
+      if(response.status === 200)
       {
-        setResponseSuccess(false)
+        console.log(data)
+        setBooks(data)
       }
       if(response.status === 200)
-      console.log(data)
-      setBooks(data)
-      setResponseSuccess(true)
+      {
+        console.error(err)
+      }
     }
 
     fetchData();
@@ -71,8 +70,7 @@ const GetUserBooks = ({loggedInUser}) => {
                   user = {loggedInUser}                
                   handleClose={toggleAddClose}/>
                 )}                
-      <div className="list-books-container">
-      {responseSuccess ? (
+      <div>
           <table>
             <tr>
                 <th>Antal</th>
@@ -136,7 +134,6 @@ const GetUserBooks = ({loggedInUser}) => {
             </tr>
           ))}          
           </table>
-      ) : (<div><p>Du har inga böcker till försäljning</p></div>) }
       </div>
     </section>
   );

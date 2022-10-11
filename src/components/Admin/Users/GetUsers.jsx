@@ -111,7 +111,7 @@ const GetUsers = ({loggedInUser}) => {
           />
           <button className="lp-buttons" onClick={searchUser}>Sök</button>
         </div>
-      <div className="list-books-container">
+      <div>
           <table>
             <tr>
                 <th>Användarnamn</th>
@@ -125,12 +125,12 @@ const GetUsers = ({loggedInUser}) => {
             <tr key={user.id}>
                 <td>{user.username}</td>
                 <td>{user.mail}</td>  
-                {user.isBlocked ? (<td>Ja</td>) : 
-                (<td>Nej</td>)} 
-                {user.isActive ? (<td>Ja</td>) : 
-                (<td>Nej</td>)}   
-                {user.isAdmin ? (<td>Ja</td>) : 
-                (<td>Nej</td>)}
+                {user.isBlocked ? (<td className='centered'>Ja</td>) : 
+                (<td className='centered'>Nej</td>)} 
+                {user.isActive ? (<td className='centered'>Ja</td>) : 
+                (<td className='centered'>Nej</td>)}   
+                {user.isAdmin ? (<td className='centered'>Ja</td>) : 
+                (<td className='centered'>Nej</td>)}
                 <tr>
                     <td>
                     <td className='array'>

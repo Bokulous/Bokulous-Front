@@ -6,11 +6,11 @@ const DeleteCategory = (props) => {
   const categories = props.categories
   const category = categories[props.index]
 
-    function deleteCategory() 
+    async function deleteCategory() 
     {
       console.log(category.id)
       let action = "/api/Books/DeleteCategory"
-          fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
+          await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
              method: 'DELETE',
              headers: {
                  'Accept':'application/json',
