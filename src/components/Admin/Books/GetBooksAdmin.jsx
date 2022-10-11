@@ -76,7 +76,7 @@ const GetBooksAdmin = ({loggedInUser}) => {
                   user = {loggedInUser}   
                   handleClose={toggleAddClose}/>
                 )}                
-      <div className="list-books-container">
+      <div>
           <table>
             <tr>
                 <th>Antal</th>
@@ -84,11 +84,12 @@ const GetBooksAdmin = ({loggedInUser}) => {
                 <th>Författare</th>
                 <th>Publiserad</th>
                 <th>Kategori</th>
+                <th>Säljare</th>
                 <th></th>
             </tr>
           {books?.map((book, i) => (
             <tr key={book.id}>
-                <td>{book.inStorage}</td>
+                <td className="centered">{book.inStorage}</td>
                 <td>{book.title}</td>
                 <td>
                     {book?.authors?.map((author) => (                  
@@ -100,11 +101,12 @@ const GetBooksAdmin = ({loggedInUser}) => {
                 <td>{book.published}</td>
                 <td>        
                 {book?.categories?.map((category) => (               
-                   <tr>
+                    <tr>
                         <td className='array'>{category}</td>  
-                    </tr>                                
+                    </tr>                               
                 ))}   
-                </td>         
+                </td>  
+                <td>{book.seller.username}</td>       
                 <tr>
                     <td>
                     <td className='array'>
@@ -119,7 +121,7 @@ const GetBooksAdmin = ({loggedInUser}) => {
                     )}                  
                     </td>
                     <td className='array'>
-                    <button className="table-btn" onClick={() => toggleDeleteOpen(i)}> Ta bort</button> 
+                    <button className="table-btn" onClick={() => toggleDeleteOpen(i)}>Minska</button> 
                     {isDeleteOpen && i == currentOpenBook && (
                     <DeleteBook 
                       index = {currentOpenBook}

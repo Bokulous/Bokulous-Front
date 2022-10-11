@@ -1,0 +1,17 @@
+.form {
+    text-align: left;
+    color: var(--text);
+    padding: 6px;
+}
+.form-label {
+    color: var(--text);
+}
+.form-input {
+    width: 100%;
+}
+.form-label {
+    font-size: medium;
+}
+.form-header {
+    font-size: x-large;
+}

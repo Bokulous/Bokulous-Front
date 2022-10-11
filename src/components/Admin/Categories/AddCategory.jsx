@@ -2,13 +2,13 @@ import { useState } from 'react';
 import config from '../../../config.js';
 import '../../../styles/PopUp.css';
 
-const AddCategory = (e) => {
+const AddCategory = (props) => {
     const [category, setCategory] = useState("");
 
-    function addCategory() 
+    async function addCategory() 
     {       
         let action = "/api/Books/AddCategory"
-        fetch(config.apiSettings.address + ":" + config.apiSettings.port + action + `/${category}`, {
+        await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action + `/${category}`, {
              method: 'POST',
              headers: {
                  'Accept':'application/json',
@@ -36,7 +36,7 @@ const AddCategory = (e) => {
     return (
     <div className="popup-box">
       <div className="box">
-      <span className="close-icon" onClick={e.handleClose}>x</span>
+      <span className="close-icon" onClick={props.handleClose}>x</span>
         <h2>Lägg till en ny kategori</h2>
         <input
           type="text"

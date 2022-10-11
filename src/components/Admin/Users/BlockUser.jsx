@@ -29,10 +29,10 @@ const BlockUser = (props) => {
            })
      }  
 
-    function unBlockUser() 
+    async function unBlockUser() 
     {
       let action = "/api/Admin/UnBlockUser"+`/${user.id}` + `/${admin.id}` + `/${admin.password}`
-          fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
+          await fetch(config.apiSettings.address + ":" + config.apiSettings.port + action, {
              method: 'PUT',
              headers: {
                  'Accept':'application/json',

@@ -1,18 +1,27 @@
 table {
+    margin: 0 auto;
     margin-top: 1rem;
-    width: 100%;
     color: #EDBFC6;
-    text-align: left;
-    line-height: 14px;
+    line-height: 16px;
+    font-size:small;
 }
 th {
     color: #AF8D86;
 }
 td, th {
     border: 1px solid #5F4842;
+    text-align: left;
+  }
+tr {
+    width: 100%;
   }
 .array {
     border: none;
+    text-align: left;
+}
+
+.centered {
+text-align: center;
 }
 
 .table-btn {

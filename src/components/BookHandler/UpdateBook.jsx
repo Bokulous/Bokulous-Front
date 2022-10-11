@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import config from '../../config.js';
 import '../../styles/PopUp.css';
+import '../../styles/Form.css';
+
 
 const UpdateBook = (props) => {
     const books = props.books
@@ -76,63 +78,81 @@ const UpdateBook = (props) => {
         <div className="popup-box-form">
           <div className="box">
           <span className="close-icon" onClick={props.handleClose}>x</span>
-            <h2>Redigera</h2>
+            <h2 className='form-header'>Redigera</h2>
             <form>
-            <input
+            <div className='form'>
+            <label className='form-label'>ISBN</label>
+            <input className='form-input'
               type="text"
               value={isbn}
               placeholder="ISBN"
               onChange={(e) => setIsbn(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Titel</label>
+            <input className='form-input'
               type="text"
               value={title}
               placeholder="Titel"
               onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Kategori</label>
+            <input className='form-input'
               type="text"
               value={joinedCategories}
               placeholder="Kategori"
               onChange={(e) => setJoinedCategories(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Språk</label>
+            <input className='form-input'
               type="text"
               value={language}
               placeholder="Språk"
               onChange={(e) => setLanguage(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Författare</label>
+            <input className='form-input'
               type="text"
               value={joinedAuthors}
               placeholder="Författare"
               onChange={(e) => setJoinedAuthors(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Utgivningsår</label>
+            <input className='form-input'
               type="text"
               value={published}
               placeholder="Utgivningsår"
               onChange={(e) => setPublished(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Vikt i gram</label>
+            <input className='form-input'
               type="text"
               value={weight}
               placeholder="Vikt"
               onChange={(e) => setWeight(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Pris</label>
+            <input className='form-input'
               type="text"
               value={price}
               placeholder="Pris"
               onChange={(e) => setPrice(e.target.value)}
-            />
-            <input
+            /></div>
+            <div className='form'>
+            <label className='form-label'>Antalet böcker</label>
+            <input className='form-input'
               type="text"
               value={inStorage}
               placeholder="Antal böcker"
               onChange={(e) => setInstorage(e.target.value)}
-            />< br/>
-            <label>Begagnad</label>
+            /></div>< br/>
+            <label className='form-label'>Begagnad</label>
             <label> 
                 <input type="checkbox" label="Begagnad bok" checked={isUsed} onChange={handleCheck}/>
             </label>
